@@ -66,3 +66,4 @@ group :test do
 end
 
 gem 'jquery-rails'
+gem 'bootstrap', '~> 5.1.3'

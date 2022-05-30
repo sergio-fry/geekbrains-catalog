@@ -2,14 +2,14 @@
 
 <h1>Categories</h1>
 
-<table id="categories">
+<table id="categories" class="table table-striped">
   <tr>
-    <th>title</th>
-    <th>Active?</th>
-    <th>buttons</th>
+    <th scope="col">title</th>
+    <th scope="col">Active?</th>
+    <th scope="col">buttons</th>
   </tr>
   <% @categories.each do |category| %>
-    <tr>
+    <tr class="<%= !category.active? ? 'table-warning' : '' %>">
       <td><%= category.title %></td>
       <td><%= link_to category.active?.to_s, activate_category_path(category), class: 'activate-button' %></td>
       <td><%= link_to "Show this category", category %></td>
@@ -18,3 +18,5 @@
 </table>
 
 <%= link_to "New category", new_category_path %>
+
+
