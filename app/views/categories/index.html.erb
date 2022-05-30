@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Categories</h1>
+
+<table id="categories">
+  <tr>
+    <th>title</th>
+    <th>Active?</th>
+    <th>buttons</th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.title %></td>
+      <td><%= link_to category.active?.to_s, activate_category_path(category), method: :post %></td>
+      <td><%= link_to "Show this category", category %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to "New category", new_category_path %>
