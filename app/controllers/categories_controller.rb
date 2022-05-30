@@ -22,6 +22,9 @@ class CategoriesController < ApplicationController
 
   def activate
     @category.update_attribute :active, !@category.active?
+    sleep rand(3)
+
+    render json: @category 
   end
 
   # POST /categories or /categories.json

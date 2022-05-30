@@ -11,7 +11,7 @@
   <% @categories.each do |category| %>
     <tr>
       <td><%= category.title %></td>
-      <td><%= link_to category.active?.to_s, activate_category_path(category), method: :post %></td>
+      <td><%= link_to category.active?.to_s, activate_category_path(category), class: 'activate-button' %></td>
       <td><%= link_to "Show this category", category %></td>
     </tr>
   <% end %>

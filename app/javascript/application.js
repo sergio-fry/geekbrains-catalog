@@ -4,4 +4,21 @@
 
 
 $(function() {
+
+  $('.activate-button').click(function() {
+    var $button = $(this);
+
+    $.ajax(
+      $button.attr('href'), {
+        method: 'post'
+      }
+    ).done(function(data) {
+      $button.text(data.active);
+    });
+
+
+    return false;
+  });
+
+
 })
