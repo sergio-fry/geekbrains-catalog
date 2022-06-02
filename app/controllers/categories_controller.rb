@@ -8,6 +8,9 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
+    respond_to do |format|
+      format.json { render json: {foo: :bar} }
+    end
   end
 
   # GET /categories/new
