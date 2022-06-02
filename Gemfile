@@ -75,3 +75,5 @@ gem "simple_form"
 
 gem "grape", "~> 1.6"
 gem "grape-entity"
+
+gem "devise", "~> 4.8"
