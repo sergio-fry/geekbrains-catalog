@@ -66,6 +66,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'database_cleaner-active_record'
 end
 
 gem "jquery-rails"
