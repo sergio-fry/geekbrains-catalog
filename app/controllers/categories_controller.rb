@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[ show edit update destroy activate ]
+  before_action :set_category, only: %i[show edit update destroy activate]
 
   # GET /categories or /categories.json
   def index
@@ -19,12 +19,11 @@ class CategoriesController < ApplicationController
   def edit
   end
 
-
   def activate
     @category.update_attribute :active, !@category.active?
     sleep rand(3)
 
-    render json: @category 
+    render json: @category
   end
 
   # POST /categories or /categories.json
@@ -66,13 +65,14 @@ class CategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = Category.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def category_params
-      params.require(:category).permit(:title, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
+    @category = Category.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def category_params
+    params.require(:category).permit(:title, :description)
+  end
 end
