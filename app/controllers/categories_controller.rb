@@ -9,7 +9,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1 or /categories/1.json
   def show
     respond_to do |format|
-      format.json { render json: {foo: :bar} }
+      # format.json { render json: @category.as_json(only: [:title, :active]) }
+      format.json { render json: @category.as_json(except: [:created_at, :updated_at]) }
+      format.html
     end
   end
 
