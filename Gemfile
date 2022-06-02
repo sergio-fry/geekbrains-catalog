@@ -72,3 +72,5 @@ end
 gem "jquery-rails"
 gem "bootstrap", "~> 5.1.3"
 gem "simple_form"
+
+gem "grape", "~> 1.6"
