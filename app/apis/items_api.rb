@@ -10,9 +10,8 @@ class ItemsApi < Grape::API
     end
     route_param :id do
       get do
-        item
+        ItemSerializer.new(item).as_json
       end
     end
   end
 end
-

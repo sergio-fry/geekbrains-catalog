@@ -66,7 +66,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'database_cleaner-active_record'
+  gem "database_cleaner-active_record"
 end
 
 gem "jquery-rails"
@@ -74,3 +74,4 @@ gem "bootstrap", "~> 5.1.3"
 gem "simple_form"
 
 gem "grape", "~> 1.6"
+gem "grape-entity"
