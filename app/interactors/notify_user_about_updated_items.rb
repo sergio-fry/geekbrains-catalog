@@ -1,0 +1,2 @@
+class NotifyUserAboutUpdatedItems
+end
