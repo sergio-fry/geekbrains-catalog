@@ -77,3 +77,5 @@ gem "grape", "~> 1.6"
 gem "grape-entity"
 
 gem "devise", "~> 4.8"
+
+gem "pundit", "~> 2.2"
