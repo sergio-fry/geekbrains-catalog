@@ -1,6 +1,6 @@
 class UserPolicy < ApplicationPolicy
   def index?
-    user.role == "admin"
+    true
   end
 
   def create?
@@ -12,11 +12,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.role == "admin"
+    user.role == "admin" || user == record
   end
 
   def update?
-    user.role == "admin"
+    user.role == "admin" || user == record
   end
 
   def destroy?
@@ -25,7 +25,11 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.all
+      if user.role == "admin"
+        scope.all
+      else
+        scope.where(id: user)
+      end
     end
   end
 end
