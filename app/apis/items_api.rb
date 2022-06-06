@@ -14,19 +14,19 @@ class ItemsApi < Grape::API
       end
     end
 
-    desc "Items list"
+    desc 'Items list'
     get do
-      authenticate!
+      # authenticate!
       present Item.all, with: ItemSerializer
     end
 
-    desc "Get item"
+    desc 'Get item'
     params do
-      requires :id, type: Integer, desc: "Item ID."
+      requires :id, type: Integer, desc: 'Item ID.'
     end
     route_param :id do
       get do
-        authenticate!
+        # authenticate!
         ItemSerializer.new(item)
       end
     end
