@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  items_mailer:
+    notify_user:
+      subject: "Items updated"

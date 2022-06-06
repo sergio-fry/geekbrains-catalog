@@ -59,6 +59,8 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   gem "standard"
+  gem "letter_opener"
+  gem "ffaker"
 end
 
 group :test do
