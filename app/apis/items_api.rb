@@ -10,19 +10,19 @@ class ItemsApi < Grape::API
       end
 
       def authenticate!
-        error!("401 Unauthorized", 401) unless current_user
+        error!('401 Unauthorized', 401) unless current_user
       end
     end
 
-    desc "Items list"
+    desc 'Items list'
     get do
       # authenticate!
       present Item.all, with: ItemSerializer
     end
 
-    desc "Get item"
+    desc 'Get item'
     params do
-      requires :id, type: Integer, desc: "Item ID."
+      requires :id, type: Integer, desc: 'Item ID.'
     end
     route_param :id do
       get do
