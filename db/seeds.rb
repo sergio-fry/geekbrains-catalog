@@ -6,14 +6,28 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-admin = User.find_or_initialize_by(email: "admin@example.com")
-admin.role = :admin
-admin.name = "Admin"
-admin.password = admin.password_confirmation = "secret123"
-admin.save!
+def create_user(email, name, role)
+  user = User.find_or_initialize_by(email: email)
+  user.role = role
+  user.name = name
+  user.password = user.password_confirmation = "secret123"
+  user.save!
+end
 
-user = User.find_or_initialize_by(email: "user@example.com")
-user.role = :default
-user.name = "User"
-user.password = user.password_confirmation = "secret123"
-user.save!
+create_user("admin@example.com", "Admin", "admin")
+create_user("user@example.com", "User", "user")
+
+20.times do
+  create_user(FFaker::Internet.email, FFaker::Name.name, "user")
+end
+
+5.times do
+  category = Category.create!(
+    title: FFaker::Game.category
+  )
+
+  category.items.create!(
+    title: FFaker::Game.title,
+    price: FFaker::Number.decimal
+  )
+end

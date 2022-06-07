@@ -1,0 +1,12 @@
+<%= image_tag attachments['logo.png'].url %>
+
+<h1>Items updated!</h1>
+
+<ul>
+  <% @items.each do |item| %>
+    <li>
+      <%= link_to item.title, item_url(item) %>, <%= number_to_currency(item.price, unit: 'RUR') %>
+    </li>
+  <% end %>
+</ul>
+
