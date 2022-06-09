@@ -61,6 +61,7 @@ group :development do
   gem "standard"
   gem "letter_opener"
   gem "ffaker"
+  gem "annotate"
 end
 
 group :test do
