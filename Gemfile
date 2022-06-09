@@ -62,6 +62,7 @@ group :development do
   gem "letter_opener"
   gem "ffaker"
   gem "annotate"
+  gem "rails-erd"
 end
 
 group :test do
