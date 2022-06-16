@@ -6,5 +6,5 @@ json.price_rur item.price * 60
 json.date I18n.l(Time.now)
 
 json.author do
-  json.name 'Ivan'
+  json.name "Ivan"
 end

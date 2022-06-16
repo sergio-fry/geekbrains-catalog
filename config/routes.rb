@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'home#index'
+  root "home#index"
 
-  mount RootApi => '/api'
+  mount RootApi => "/api"
 end
