@@ -74,15 +74,12 @@ group :test do
 end
 
 gem "bootstrap", "~> 5.1.3"
-gem "jquery-rails"
-gem "simple_form"
-
+gem "devise", "~> 4.8"
+gem "dotenv-rails"
 gem "grape", "~> 1.6"
 gem "grape-entity"
-
-gem "devise", "~> 4.8"
+gem "jquery-rails"
 gem "pundit", "~> 2.2"
-
-gem "dotenv-rails"
-
 gem "rack-attack", "~> 6.6"
+gem "simple_form"
+gem "whenever", require: false
