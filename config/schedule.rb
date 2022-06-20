@@ -22,6 +22,6 @@
 # set :environment, ENV["RAILS_ENV"]
 set :output, error: "log/cron_error.log", standard: "log/cron.log"
 
-every 1.minute do
+every 1.day, at: "4:30 am" do
   rake "cron:test_file"
 end
