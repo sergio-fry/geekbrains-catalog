@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   devise_for :users
 
@@ -13,4 +15,5 @@ Rails.application.routes.draw do
   root "home#index"
 
   mount RootApi => "/api"
+  mount Sidekiq::Web => "/sidekiq"
 end
