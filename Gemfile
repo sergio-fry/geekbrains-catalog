@@ -83,3 +83,5 @@ gem "pundit", "~> 2.2"
 gem "rack-attack", "~> 6.6"
 gem "simple_form"
 gem "whenever", require: false
+
+gem "sidekiq", "~> 6.5"
