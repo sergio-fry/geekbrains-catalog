@@ -25,4 +25,8 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :validatable
 
   has_one_attached :avatar
+
+  has_one_attached :avatar do |attachable|
+    attachable.variant :thumb, resize_to_fill: [120, 120]
+  end
 end
