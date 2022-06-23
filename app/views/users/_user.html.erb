@@ -1,4 +1,7 @@
 <div id="<%= dom_id user %>">
+  <%= image_tag(user.avatar, width: 80, height: 80, class: 'rounded-circle') if user.avatar.attached? %>
+
   <%= user.email %>
   <%= user.role %>
+
 </div>
