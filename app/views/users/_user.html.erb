@@ -1,45 +1,9 @@
 <div id="<%= dom_id user %>">
   <% if user.avatar.attached? %>
-    <table>
-      <tr>
-        <th>resize</th>
-        <td>
-          <%= image_tag(user.avatar.variant(resize: '120'), class: 'rounded-circle') %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>resize_to_limit</th>
-        <td>
-          <%= image_tag(user.avatar.variant(resize_to_limit: [120, 120]), class: 'rounded-circle') %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>resize_to_fit</th>
-        <td>
-          <%= image_tag(user.avatar.variant(resize_to_fit: [120, 120]), class: 'rounded-circle') %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>resize_to_fill</th>
-        <td>
-          <%= image_tag(user.avatar.variant(resize_to_fill: [120, 120]), class: 'rounded-circle') %>
-        </td>
-      </tr>
-
-      <tr>
-        <th>thumb</th>
-        <td>
-          <%= image_tag(user.avatar.variant(:thumb), class: 'rounded-circle') %>
-        </td>
-      </tr>
-    </table>
+    <%= image_tag(user.avatar.variant(resize_to_fill: [120, 120, gravity: 'north'], grayscale: 'Rec709Luma'), class: 'rounded-circle') %>
   <% end %>
 
   <%= user.email %>
   <%= user.role %>
-
 </div>
 
