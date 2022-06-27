@@ -73,6 +73,7 @@ group :test do
   gem "webdrivers"
 end
 
+gem "activeadmin"
 gem "bootstrap", "~> 5.1.3"
 gem "devise", "~> 4.8"
 gem "dotenv-rails"
@@ -81,7 +82,6 @@ gem "grape-entity"
 gem "jquery-rails"
 gem "pundit", "~> 2.2"
 gem "rack-attack", "~> 6.6"
+gem "sidekiq", "~> 6.5"
 gem "simple_form"
 gem "whenever", require: false
-
-gem "sidekiq", "~> 6.5"
