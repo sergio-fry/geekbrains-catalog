@@ -4,7 +4,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    false
+    admin?
   end
 
   def new?
@@ -20,7 +20,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    false
+    admin?
   end
 
   class Scope < Scope
