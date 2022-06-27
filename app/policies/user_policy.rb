@@ -12,11 +12,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def show?
-    user.role == "admin" || user == record
+    admin? || user == record
   end
 
   def update?
-    user.role == "admin" || user == record
+    admin? || user == record
   end
 
   def destroy?
@@ -25,7 +25,7 @@ class UserPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      if user.role == "admin"
+      if admin?
         scope.all
       else
         scope.where(id: user)

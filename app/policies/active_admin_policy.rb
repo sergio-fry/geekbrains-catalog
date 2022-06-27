@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class ApplicationPolicy
+class ActiveAdminPolicy < ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -9,11 +7,11 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    admin?
   end
 
   def show?
-    false
+    admin?
   end
 
   def create?
@@ -43,23 +41,11 @@ class ApplicationPolicy
     end
 
     def resolve
-      raise NotImplementedError, "You must define #resolve in #{self.class}"
+      scope
     end
 
     private
 
     attr_reader :user, :scope
-
-    private 
-
-    def admin?
-      user.role == "admin"
-    end
-  end
-
-  private
-
-  def admin?
-    user.role == "admin"
   end
 end
