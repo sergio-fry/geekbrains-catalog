@@ -1,4 +1,9 @@
 <div id="<%= dom_id user %>">
+  <% if user.avatar.attached? %>
+    <%= image_tag(user.avatar.variant(resize_to_fill: [120, 120, gravity: 'north'], grayscale: 'Rec709Luma'), class: 'rounded-circle') %>
+  <% end %>
+
   <%= user.email %>
   <%= user.role %>
 </div>
+

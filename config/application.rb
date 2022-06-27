@@ -20,5 +20,6 @@ module Catalog
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.time_zone = ENV.fetch("TIMEZONE")
+    config.active_storage.variant_processor = :mini_magick
   end
 end
