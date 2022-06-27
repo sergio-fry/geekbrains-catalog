@@ -26,4 +26,30 @@ ActiveAdmin.register User do
     end
     f.actions
   end
+
+  member_action :block, method: :post do
+    # user.block!
+    redirect_to resource_path(resource), notice: "Locked!"
+  end
+  action_item :block, only: :show do
+    if false # resource.blocked?
+      link_to "Unblock", url_for(action: :block), method: :post
+    else
+      link_to "Block", url_for(action: :block), method: :post
+    end
+  end
+
+  collection_action :import_csv, method: [:get, :post] do
+    # Do some CSV importing work here...
+    if request.post?
+      # TODO Import
+      redirect_to collection_path, notice: "CSV imported successfully!"
+    else
+      render :import_form
+    end
+  end
+
+  action_item :block, only: :index do
+    link_to "Import from CSV", url_for(action: :import_csv)
+  end
 end

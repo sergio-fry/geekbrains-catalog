@@ -23,6 +23,10 @@ class UserPolicy < ApplicationPolicy
     admin?
   end
 
+  def block?
+    admin?
+  end
+
   class Scope < Scope
     def resolve
       if admin?
