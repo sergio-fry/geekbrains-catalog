@@ -1,5 +1,3 @@
-require "axlsx"
-
 ActiveAdmin.register User do
   menu priority: 2
   permit_params :email, :password, :password_confirmation
@@ -66,18 +64,7 @@ ActiveAdmin.register User do
 
   collection_action :export_xlsx, method: [:get, :post] do
     if request.post?
-      p = Axlsx::Package.new
-      wb = p.workbook
-
-      wb.add_worksheet(name: "Users") do |sheet|
-        sheet.add_row ["email", "name", "role"]
-
-        User.where(role: params[:role]).find_each do |user|
-          sheet.add_row [user.email, user.name, user.role]
-        end
-      end
-
-      send_data p.to_stream.read, filename: "users.xlsx"
+      send_data ExportedUsers.new(User.where(role: params[:role])).as_xlsx, filename: "users.xlsx"
     else
       render :export_form
     end
