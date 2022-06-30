@@ -1,6 +1,18 @@
 <%= form_tag do %>
-  <%= label_tag :role %>
-  <%= select_tag "role", options_for_select([:admin, :default]) %>
+  <p>
+    <%= label_tag :role %>
+    <%= select_tag :role, options_for_select(@roles) %>
+  </p>
+
+  <p>
+    <%= label_tag :date_from %>
+    <%= date_field_tag :date_from, 1.month.ago.to_date %>
+  </p>
+
+  <p>
+    <%= label_tag :date_to %>
+    <%= date_field_tag :date_to, Date.today %>
+  </p>
 
   <br>
   <br>
