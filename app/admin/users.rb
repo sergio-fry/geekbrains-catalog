@@ -63,10 +63,12 @@ ActiveAdmin.register User do
 
   collection_action :export, method: [:get, :post] do
     if request.post?
-      send_data ExportedUsers.new(
+      exported_users = ExportedUsers.new(
         role: params[:role],
         created_at_range: params[:date_from].to_date..params[:date_to].to_date
-      ).as_xlsx, filename: "users.xlsx"
+      )
+
+      send_data exported_users.as_xlsx, filename: exported_users.filename
     else
       @roles = User.group(:role).count.keys
       render :export_form

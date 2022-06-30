@@ -14,6 +14,10 @@ class ImportedUsers
         role: attrs["role"]
       )
 
+      if user.new_record?
+        user.password = user.password_confirmation = "secret123"
+      end
+
       user.save!
     end
   end

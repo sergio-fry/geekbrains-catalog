@@ -25,4 +25,8 @@ class ExportedUsers
       created_at: @created_at_range
     )
   end
+
+  def filename
+    "users_#{@role}_#{@created_at_range.begin}_#{@created_at_range.end}.xlsx"
+  end
 end
