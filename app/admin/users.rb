@@ -52,4 +52,11 @@ ActiveAdmin.register User do
   action_item :block, only: :index do
     link_to "Import from CSV", url_for(action: :import_csv)
   end
+
+  csv do
+    column :id
+    column :email
+    column :role
+    column :admin, ->(user) { user.role == "admin" }
+  end
 end
