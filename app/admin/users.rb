@@ -1,3 +1,5 @@
+require "axlsx"
+
 ActiveAdmin.register User do
   menu priority: 2
   permit_params :email, :password, :password_confirmation
@@ -49,8 +51,38 @@ ActiveAdmin.register User do
     end
   end
 
-  action_item :block, only: :index do
-    link_to "Import from CSV", url_for(action: :import_csv)
+  collection_action :import_csv, method: [:get, :post] do
+    # Do some CSV importing work here...
+    if request.post?
+      # TODO Import
+      redirect_to collection_path, notice: "CSV imported successfully!"
+    else
+      render :import_form
+    end
+  end
+  action_item :import, only: :index do
+    link_to "Import", url_for(action: :import_csv)
+  end
+
+  collection_action :export_xlsx, method: [:get, :post] do
+    if request.post?
+
+      p = Axlsx::Package.new
+      wb = p.workbook
+
+      wb.add_worksheet(name: "Basic Worksheet") do |sheet|
+        sheet.add_row ["First", "Second", "Third"]
+        sheet.add_row [1, 2, 3]
+      end
+
+      send_data p.to_stream.read, filename: "users.xlsx"
+    else
+      render :export_form
+    end
+  end
+
+  action_item :export, only: :index do
+    link_to "Export", url_for(action: :export_xlsx)
   end
 
   csv do
