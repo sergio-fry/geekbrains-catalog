@@ -66,13 +66,15 @@ ActiveAdmin.register User do
 
   collection_action :export_xlsx, method: [:get, :post] do
     if request.post?
-
       p = Axlsx::Package.new
       wb = p.workbook
 
-      wb.add_worksheet(name: "Basic Worksheet") do |sheet|
-        sheet.add_row ["First", "Second", "Third"]
-        sheet.add_row [1, 2, 3]
+      wb.add_worksheet(name: "Users") do |sheet|
+        sheet.add_row ["email", "name", "role"]
+
+        User.where(role: params[:role]).find_each do |user|
+          sheet.add_row [user.email, user.name, user.role]
+        end
       end
 
       send_data p.to_stream.read, filename: "users.xlsx"
