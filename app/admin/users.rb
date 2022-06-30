@@ -49,20 +49,19 @@ ActiveAdmin.register User do
     end
   end
 
-  collection_action :import_csv, method: [:get, :post] do
-    # Do some CSV importing work here...
+  collection_action :import, method: [:get, :post] do
     if request.post?
-      # TODO Import
-      redirect_to collection_path, notice: "CSV imported successfully!"
+      ImportedUsers.new(params[:file]).save
+      redirect_to collection_path, notice: "Users imported successfully!"
     else
       render :import_form
     end
   end
   action_item :import, only: :index do
-    link_to "Import", url_for(action: :import_csv)
+    link_to "Import", url_for(action: :import)
   end
 
-  collection_action :export_xlsx, method: [:get, :post] do
+  collection_action :export, method: [:get, :post] do
     if request.post?
       send_data ExportedUsers.new(
         role: params[:role],
@@ -75,7 +74,7 @@ ActiveAdmin.register User do
   end
 
   action_item :export, only: :index do
-    link_to "Export", url_for(action: :export_xlsx)
+    link_to "Export", url_for(action: :export)
   end
 
   csv do
