@@ -49,7 +49,40 @@ ActiveAdmin.register User do
     end
   end
 
-  action_item :block, only: :index do
-    link_to "Import from CSV", url_for(action: :import_csv)
+  collection_action :import, method: [:get, :post] do
+    if request.post?
+      ImportedUsers.new(params[:file]).save
+      redirect_to collection_path, notice: "Users imported successfully!"
+    else
+      render :import_form
+    end
+  end
+  action_item :import, only: :index do
+    link_to "Import", url_for(action: :import)
+  end
+
+  collection_action :export, method: [:get, :post] do
+    if request.post?
+      exported_users = ExportedUsers.new(
+        role: params[:role],
+        created_at_range: params[:date_from].to_date..params[:date_to].to_date
+      )
+
+      send_data exported_users.as_xlsx, filename: exported_users.filename
+    else
+      @roles = User.group(:role).count.keys
+      render :export_form
+    end
+  end
+
+  action_item :export, only: :index do
+    link_to "Export", url_for(action: :export)
+  end
+
+  csv do
+    column :id
+    column :email
+    column :role
+    column :admin, ->(user) { user.role == "admin" }
   end
 end

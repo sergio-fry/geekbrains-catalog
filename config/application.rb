@@ -17,7 +17,7 @@ module Catalog
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.eager_load_paths << Rails.root.join("app/external")
 
     config.time_zone = ENV.fetch("TIMEZONE")
     config.active_storage.variant_processor = :mini_magick

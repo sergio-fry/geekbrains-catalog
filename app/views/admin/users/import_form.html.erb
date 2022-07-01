@@ -1,4 +1,4 @@
-<%= form_tag do %>
-  <%= file_field_tag :csv %>
-  <%= submit_tag %>
+<%= form_tag({}, multipart: true) do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag :import %>
 <% end %>

@@ -85,3 +85,5 @@ gem "rack-attack", "~> 6.6"
 gem "sidekiq", "~> 6.5"
 gem "simple_form"
 gem "whenever", require: false
+gem "caxlsx"
+gem "roo"
