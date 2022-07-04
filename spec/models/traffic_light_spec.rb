@@ -6,16 +6,16 @@ RSpec.describe TrafficLight, type: :model do
 
     expect(traffic_light).to be_red
 
-    traffic_light.prepare_to_go
+    traffic_light.prepare
     expect(traffic_light).to be_yellow_to_green
 
-    expect { traffic_light.prepare_to_go }.to raise_error(AASM::InvalidTransition)
-    expect(traffic_light.may_prepare_to_go?).to be_falsey
+    expect { traffic_light.prepare }.to raise_error(AASM::InvalidTransition)
+    expect(traffic_light.may_prepare?).to be_falsey
 
     traffic_light.go
     expect(traffic_light).to be_green
 
-    traffic_light.prepare_to_stop
+    traffic_light.prepare
     expect(traffic_light).to be_yellow_to_red
 
     traffic_light.stop

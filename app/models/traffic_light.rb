@@ -7,16 +7,13 @@ class TrafficLight < ApplicationRecord
     state :yellow_to_red
     state :green
 
-    event :prepare_to_go do
+    event :prepare do
       transitions from: :red, to: :yellow_to_green
+      transitions from: :green, to: :yellow_to_red
     end
 
     event :go do
       transitions from: :yellow_to_green, to: :green
-    end
-
-    event :prepare_to_stop do
-      transitions from: :green, to: :yellow_to_red
     end
 
     event :stop do
