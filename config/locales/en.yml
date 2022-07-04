@@ -34,3 +34,10 @@ en:
   items_mailer:
     notify_user:
       subject: "Items updated"
+
+  traffic_lights:
+    aasm:
+      red: stop
+      green: go
+      yellow_to_red: prepare to stop
+      yellow_to_green: prepare to go

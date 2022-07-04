@@ -5,9 +5,11 @@ RSpec.describe TrafficLight, type: :model do
     traffic_light = TrafficLight.new
 
     expect(traffic_light).to be_red
+    expect(traffic_light.aasm.human_state).to eq "stop"
 
     traffic_light.prepare
     expect(traffic_light).to be_yellow_to_green
+    expect(traffic_light.aasm.human_state).to eq "prepare to go"
 
     expect { traffic_light.prepare }.to raise_error(AASM::InvalidTransition)
     expect(traffic_light.may_prepare?).to be_falsey
