@@ -17,7 +17,8 @@ class Item < ApplicationRecord
   has_many :order_items
   has_many :orders, through: :order_items
 
-  after_update -> { orders.each(&:touch) }
+  # after_update -> { orders.update_all updated_at: Time.current }
+  after_update -> { Rails.cache.delete_matched "*/orders/*/item/#{id}" }
 
   def new_image
   end

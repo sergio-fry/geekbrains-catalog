@@ -101,3 +101,5 @@ group :development, :production do
   gem "sentry-ruby"
   gem "sentry-rails"
 end
+
+# gem 'redis'

@@ -466,6 +466,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 7.0.3)
   rails-erd
+  redis
   roo
   rspec-rails (~> 5.1)
   selenium-webdriver
