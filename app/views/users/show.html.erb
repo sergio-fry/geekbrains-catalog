@@ -8,3 +8,30 @@
 
   <%= button_to "Destroy this user", @user, method: :delete %>
 </div>
+
+<h2>Orders</h2>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Items</th>
+    <th>Price</th>
+  </tr>
+
+  <% @user.orders.each do |order| %>
+    <% cache order do %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= l order.created_at %></td>
+        <td>
+          <ul>
+            <%= render partial: "item", collection: order.items %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+
+  
+</table>

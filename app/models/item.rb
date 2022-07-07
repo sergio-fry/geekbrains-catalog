@@ -17,6 +17,8 @@ class Item < ApplicationRecord
   has_many :order_items
   has_many :orders, through: :order_items
 
+  after_update -> { orders.each(&:touch) }
+
   def new_image
   end
 

@@ -19,12 +19,23 @@
     <th>Orders</th>
   </tr>
   <% @category.items.map { |item| [item, ItemStats.new(item)] }.each do |item, stats| %>
-    <tr>
-      <td><%= link_to item.title, item %></td>
-      <td><%= item.price %></td>
-      <td><%= stats.sold_quantity %></td>
-      <td><%= number_to_currency stats.sold %></td>
-      <td><%= stats.orders %></td>
-    </tr>
+    <% cache item do %>
+      <tr>
+        <td><%= link_to item.title, item %></td>
+        <td><%= item.price %></td>
+        <td><%= stats.sold_quantity %></td>
+        <td><%= number_to_currency stats.sold %></td>
+        <td>
+          <%= stats.orders %>
+          <ul>
+            <% item.orders.each do |order| %>
+              <% cache order do %>
+                <li>#<%= order.id %> <%= l order.created_at %>, <%= order.user.email %>, <%= number_to_currency order.price %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
