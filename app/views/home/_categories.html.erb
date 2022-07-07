@@ -1,0 +1,18 @@
+<table class="table">
+  <tr>
+    <th>Category</th>
+    <th>Items</th>
+    <th>Sold Items</th>
+  </tr>
+  <% @categories.map { |c| [c, CategoryStats.new(c)] }.each do |category, stats| %>
+    <% cache category do %>
+      <tr>
+        <td><%= link_to category.title, category %></td>
+        <td><%= stats.items_count %></td>
+        <td><%= stats.items_sold %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<%= paginate @categories %>
