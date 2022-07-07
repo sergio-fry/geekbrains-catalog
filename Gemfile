@@ -63,6 +63,7 @@ group :development do
   gem "ffaker"
   gem "annotate"
   gem "rails-erd"
+  gem "aasm-diagram"
 end
 
 group :test do
