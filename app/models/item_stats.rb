@@ -18,4 +18,12 @@ class ItemStats
   def orders
     @item.orders.count
   end
+
+  def title
+    @item.title
+  end
+
+  def to_model
+    @item
+  end
 end

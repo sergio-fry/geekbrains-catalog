@@ -18,14 +18,14 @@ class FakeData
 
   def generate_items(categories = Category.all)
     categories.each do |category|
-      (25 * @multiplier).times do
+      (rand(10..25) * @multiplier).times do
         category.items.create! title: FFaker::Book.title, price: rand(1..100)
       end
     end
   end
 
   def generate_users
-    (100 * @multiplier).times do
+    (10 * @multiplier).times do
       User.create!(
         email: FFaker::Internet.email,
         password: "secret123",
