@@ -8,3 +8,23 @@
 
   <%= button_to "Destroy this category", @category, method: :delete %>
 </div>
+
+
+<table class="table">
+  <tr>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Sold</th>
+    <th>Sold, $</th>
+    <th>Orders</th>
+  </tr>
+  <% @category.items.map { |item| [item, ItemStats.new(item)] }.each do |item, stats| %>
+    <tr>
+      <td><%= link_to item.title, item %></td>
+      <td><%= item.price %></td>
+      <td><%= stats.sold_quantity %></td>
+      <td><%= stats.sold %></td>
+      <td><%= stats.orders %></td>
+    </tr>
+  <% end %>
+</table>
