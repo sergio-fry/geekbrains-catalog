@@ -56,6 +56,11 @@ group :development do
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   gem "rack-mini-profiler"
+  # For memory profiling
+  gem "memory_profiler"
+
+  # For call-stack profiling flamegraphs
+  gem "stackprof"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
@@ -93,6 +98,6 @@ gem "aasm", "~> 5.2"
 gem "kaminari"
 
 group :development, :production do
-gem "sentry-ruby"
-gem "sentry-rails"
+  gem "sentry-ruby"
+  gem "sentry-rails"
 end
