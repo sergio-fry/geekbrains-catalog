@@ -27,6 +27,9 @@
             <% end %>
           </td>
         </tr>
+        <tr><th>Total Items</th><th><%= @stats.items_count %></th></tr>
+        <tr><th>Total Users</th><th><%= @stats.users_count %></th></tr>
+        <tr><th>Total Orders</th><th><%= @stats.orders_count %></th></tr>
       </table>
   </div>
 </div>
@@ -45,3 +48,5 @@
     </tr>
   <% end %>
 </table>
+
+<%= paginate @categories %>

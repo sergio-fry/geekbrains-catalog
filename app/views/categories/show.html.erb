@@ -23,7 +23,7 @@
       <td><%= link_to item.title, item %></td>
       <td><%= item.price %></td>
       <td><%= stats.sold_quantity %></td>
-      <td><%= stats.sold %></td>
+      <td><%= number_to_currency stats.sold %></td>
       <td><%= stats.orders %></td>
     </tr>
   <% end %>

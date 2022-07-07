@@ -90,3 +90,9 @@ gem "caxlsx"
 gem "roo"
 
 gem "aasm", "~> 5.2"
+gem "kaminari"
+
+group :development, :production do
+gem "sentry-ruby"
+gem "sentry-rails"
+end
