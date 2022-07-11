@@ -8,6 +8,9 @@ class ItemsController < ApplicationController
 
   # GET /items/1 or /items/1.json
   def show
+    # @comments = Comment.where(commentable: @item)
+    @sorted_comments = sorted_comments Comment.where(commentable: @item)
+
     respond_to do |format|
       format.json { render json: ItemSerializer.new(@item).as_json }
       format.html
@@ -62,6 +65,21 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def sorted_comments(comments, id = nil, level = 0, result = [])
+    comment = comments.find { |c| id ? c.id == id : c.parent_id.nil? }
+    return unless comment
+
+    result << {
+      comment: comment,
+      level: level
+    }
+
+    comments.select { |c| c.parent_id == comment.id }
+      .each { |c| sorted_comments(comments, c.id, level + 1, result) }
+
+    result
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_item
