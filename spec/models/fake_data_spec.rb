@@ -27,4 +27,13 @@ RSpec.describe FakeData do
       fake_data.generate_orders(FactoryBot.create_list(:user, 3))
     end.to change(Order, :count)
   end
+
+  it "generates comments" do
+    FactoryBot.create_list(:item, 3)
+    FactoryBot.create_list(:user, 1)
+
+    expect do
+      fake_data.generate_comments
+    end.to change(Comment, :count)
+  end
 end

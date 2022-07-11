@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_07_125043) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_11_172248) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -60,6 +60,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_07_125043) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: true, null: false
     t.integer "order_index", default: 0, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "text"
+    t.integer "parent_id"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
   end
 
   create_table "items", force: :cascade do |t|
