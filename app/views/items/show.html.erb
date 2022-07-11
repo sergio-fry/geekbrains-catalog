@@ -29,7 +29,7 @@
 <h2>Comments</h2>
 
 <pre>
-<% @sorted_comments.each do |el| %>
-<%= ' ' * el[:level] %><%= el[:comment].id %> <%= el[:comment].text.truncate(50) %>
+<% @comments.each do |comment| %>
+<%= ' ' * comment.depth %><%= comment.id %> <%= comment.text.truncate(50) %>
 <% end %>
 </pre>

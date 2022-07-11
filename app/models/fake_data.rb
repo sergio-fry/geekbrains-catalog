@@ -70,7 +70,7 @@ class FakeData
 
   private
 
-  def create_comment(item, parent=nil)
+  def create_comment(item, parent = nil)
     Comment.create!(
       user: random_user,
       text: FFaker::HipsterIpsum.paragraphs,

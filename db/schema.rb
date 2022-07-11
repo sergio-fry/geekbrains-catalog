@@ -64,14 +64,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_11_172248) do
 
   create_table "comments", force: :cascade do |t|
     t.text "text"
-    t.integer "parent_id"
     t.string "commentable_type"
     t.integer "commentable_id"
     t.integer "user_id"
+    t.integer "parent_id"
+    t.integer "lft", null: false
+    t.integer "rgt", null: false
+    t.integer "depth", default: 0, null: false
+    t.integer "children_count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+    t.index ["lft"], name: "index_comments_on_lft"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["rgt"], name: "index_comments_on_rgt"
   end
 
   create_table "items", force: :cascade do |t|
