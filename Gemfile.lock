@@ -231,6 +231,7 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
     matrix (0.4.2)
+    memory_profiler (1.0.0)
     method_source (1.0.0)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
@@ -377,6 +378,14 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sentry-rails (5.3.1)
+      railties (>= 5.0)
+      sentry-ruby-core (~> 5.3.1)
+    sentry-ruby (5.3.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      sentry-ruby-core (= 5.3.1)
+    sentry-ruby-core (5.3.1)
+      concurrent-ruby
     sidekiq (6.5.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -392,6 +401,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    stackprof (0.2.19)
     standard (1.12.1)
       rubocop (= 1.29.1)
       rubocop-performance (= 1.13.3)
@@ -447,20 +457,26 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-rails
+  kaminari
   letter_opener
+  memory_profiler
   puma (~> 5.0)
   pundit (~> 2.2)
   rack-attack (~> 6.6)
   rack-mini-profiler
   rails (~> 7.0.3)
   rails-erd
+  redis
   roo
   rspec-rails (~> 5.1)
   selenium-webdriver
+  sentry-rails
+  sentry-ruby
   sidekiq (~> 6.5)
   simple_form
   sprockets-rails
   sqlite3 (~> 1.4)
+  stackprof
   standard
   tzinfo-data
   web-console

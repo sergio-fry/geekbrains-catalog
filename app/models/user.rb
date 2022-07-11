@@ -29,4 +29,7 @@ class User < ApplicationRecord
   has_one_attached :avatar do |attachable|
     attachable.variant :thumb, resize_to_fill: [120, 120]
   end
+
+  has_many :orders
+  has_many :order_items, through: :orders
 end

@@ -8,3 +8,20 @@
 
   <%= button_to "Destroy this item", @item, method: :delete %>
 </div>
+
+<h2>Orders</h2>
+<table class="table">
+  <tr>
+    <th>Date</th>
+    <th>User</th>
+    <th>Quantity</th>
+  </tr>
+  <% @item.orders.order('created_at desc').limit(10).each do |order| %>
+    <tr>
+      <td><%= order.created_at %></td>
+      <td><%= order.user.email %></td>
+      <td><%= order.order_items.find_by(item: @item).quantity %></td>
+    </tr>
+  <% end %>
+  
+</table>

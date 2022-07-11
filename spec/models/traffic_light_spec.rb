@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: traffic_lights
+#
+#  id         :integer          not null, primary key
+#  aasm_state :string
+#  address    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require "rails_helper"
 
 RSpec.describe TrafficLight, type: :model do
