@@ -103,3 +103,4 @@ group :development, :production do
 end
 
 # gem 'redis'
+gem "awesome_nested_set"

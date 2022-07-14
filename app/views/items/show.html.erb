@@ -25,3 +25,11 @@
   <% end %>
   
 </table>
+
+<h2>Comments</h2>
+
+<pre>
+<% @comments.each do |comment| %>
+<%= ' ' * comment.depth %><%= comment.id %> <%= comment.text.truncate(50) %>
+<% end %>
+</pre>

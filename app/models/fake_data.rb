@@ -8,6 +8,7 @@ class FakeData
     generate_items
     generate_users
     generate_orders
+    generate_comments
   end
 
   def generate_categories
@@ -55,7 +56,32 @@ class FakeData
     end
   end
 
+  def generate_comments
+    Item.find_each do |item|
+      root = create_comment(item)
+      create_comment(item, root)
+
+      second = create_comment(item, root)
+      create_comment(item, second)
+
+      create_comment(item, root)
+    end
+  end
+
   private
+
+  def create_comment(item, parent = nil)
+    Comment.create!(
+      user: random_user,
+      text: FFaker::HipsterIpsum.paragraphs,
+      commentable: item,
+      parent: parent
+    )
+  end
+
+  def random_user
+    @random_user = User.first
+  end
 
   def sample_items(count)
     Item.offset(rand(Item.count)).limit(count)

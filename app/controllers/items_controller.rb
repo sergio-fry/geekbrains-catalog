@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
 
   # GET /items/1 or /items/1.json
   def show
+    @comments = Comment.roots.find_by(commentable: @item).self_and_descendants
+
     respond_to do |format|
       format.json { render json: ItemSerializer.new(@item).as_json }
       format.html
